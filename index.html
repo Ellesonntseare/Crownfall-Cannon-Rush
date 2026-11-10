@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f3f0e6">
+  <meta name="description" content="Build your army through maths gates. Pick a route, outsmart the defenders, and break the Iron Crown.">
+  <title>Crownfall — Cannon Rush</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231c3536'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-size='42' fill='%23edca78'%3E%E2%99%9B%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="wordmark" href="#" aria-label="Crownfall home" id="home"><span class="brand-mark" aria-hidden="true">♛</span>CROWN<span>FALL</span><small>CANNON RUSH</small></a>
+    <div class="top-actions"><button id="sound" type="button" aria-pressed="false" aria-label="Mute sound">SOUND ON</button><button id="pause" class="hidden" type="button" aria-label="Pause game">Ⅱ <span>PAUSE</span></button></div>
+  </header>
+  <main id="battlefield" aria-label="Crownfall battlefield. Drag to steer, use the arrow keys, or choose a route below."></main>
+  <div id="hud" class="hidden">
+    <div class="stage-info"><span class="overline">THE CAMPAIGN</span><strong id="level">01 · HARBOR APPROACH</strong><span id="wave">WAVE 1 / 3</span></div>
+    <div class="goal"><div class="goal-heading"><span>FORTRESS</span><strong><span id="hp">60</span><span class="hp-separator"> / </span><span id="hp-total">60</span></strong></div><div class="bar" role="progressbar" aria-label="Fortress health" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><div id="progress"></div></div><span id="encounter" class="hidden" role="status"></span></div>
+    <div class="battle-stats"><div><span class="overline">CREW</span><strong id="army">0</strong></div><div><span class="overline">TIME</span><strong id="timer">75</strong></div></div>
+  </div>
+  <aside id="field-notes" class="hidden"><span class="overline">THE BATTLE PLAN</span><h2>Grow. March.<br>Break through.</h2><p>Your cannon fires automatically. Aim through the gates to build your next squad.</p><div class="note-rule"></div><div class="legend"><span class="legend-icon add">+</span><div><strong>Add to the squad</strong><span>+3 adds three troops once.</span></div></div><div class="legend"><span class="legend-icon multiply">×</span><div><strong>Multiply the crew</strong><span>×2 doubles passing troops.</span></div></div><div class="note-rule"></div><span class="overline">THIS WAVE</span><div id="wave-stats">Ready to march</div><span class="overline upgrade-label">YOUR UPGRADES</span><div id="upgrade-status">None yet. Earn one after this wave.</div></aside>
+  <div id="threat" class="hidden" role="status">DANGER · RED LANES ARE ABOUT TO FIRE</div>
+  <div id="hint" class="hidden" role="status"></div>
+  <section id="battle-controls" class="hidden" aria-label="Aim controls">
+    <div class="control-heading"><span class="live-dot"></span><span id="aim-feedback">Choose your first route</span><span class="autofire">AUTO FIRE</span></div>
+    <div class="route-options"><button id="route-left" class="route-choice" type="button"><span class="route-name">← LEFT ROUTE</span><strong id="left-maths">×2 → +3</strong><span id="left-total">5 troops</span></button><div class="route-divider" aria-hidden="true">OR</div><button id="route-right" class="route-choice" type="button"><span class="route-name">RIGHT ROUTE →</span><strong id="right-maths">+3 → ×2</strong><span id="right-total">8 troops</span></button></div>
+    <p class="control-help"><span>DRAG TO STEER</span><span>← → / A D</span><span class="estimate-note">Squad estimates before losses</span></p>
+  </section>
+  <div id="overlay">
+    <section class="panel" aria-labelledby="title">
+      <span class="eyebrow" id="stage-eyebrow">A LITTLE STRATEGY. A LOT OF SOLDIERS.</span>
+      <div class="menu-crown" aria-hidden="true">♛</div>
+      <h1 id="title">Small cannon.<br><span class="accent">Big ambition.</span></h1>
+      <p id="subtitle">Build your army through maths gates. Outsmart the defenders. Bring down the crown.</p>
+      <div class="instructions"><span><b>01</b> PICK A ROUTE</span><span><b>02</b> GROW YOUR CREW</span><span><b>03</b> BREAK THE WALL</span></div>
+      <div class="menu-maths" aria-label="One troop plus three equals four, multiplied by two equals eight"><span>1</span><i>+3</i><span>4</span><i>×2</i><strong>8 troops</strong></div>
+      <button id="play" class="primary" type="button">LET'S PLAY <span aria-hidden="true">↗</span></button>
+      <button id="restart" class="secondary hidden" type="button">NEW CAMPAIGN</button>
+      <p class="menu-footer">12 FORTRESSES <span>·</span> SAVES AUTOMATICALLY <span>·</span> PLAY OFFLINE</p>
+    </section>
+  </div>
+  <div id="upgrade-screen" class="hidden" role="dialog" aria-modal="true" aria-labelledby="upgrade-title"><section class="panel upgrade-panel"><span class="eyebrow">A WELL EARNED ADVANTAGE</span><h2 id="upgrade-title">Make your next<br><span class="accent">wave stronger.</span></h2><p id="upgrade-description"></p><div id="upgrade-choices"></div><p class="upgrade-footer">Choose one. Upgrades stack for this fortress.<br>The battle is paused while you decide.</p></section></div>
+  <div id="load-error" class="hidden" role="alert"><h1>The battlefield couldn't start.</h1><p>Try opening this folder with START-WINDOWS.bat in a browser with WebGL enabled.</p></div>
+  <script src="vendor-bundle.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
